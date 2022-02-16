@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Home{% endblock %}
+
+{% block body %}
+
+
+
+        <style>
+            .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+            .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+        </style>
+        <main>
+            <div class="py-5 text-center mt-5 ">
+                <a class="text-white dark" href="{{ path('graph') }}" style="font-size: 400%">{% if gain >= 0 %}
+                        +
+                    {% endif %}
+                    {{ gain|number_format(0, '', ' ') }} €</a>
+
+            </div>
+            <div class="row  ">
+                <div class="col-md-12 col-lg-12  ">
+                    <ul class="list-group list-group-flush ">
+
+                        {% for actifs in actif %}
+                        <li class="list-group-item dark" ><div class="row" style="border-bottom: solid;border-bottom-color: #AAAAAA ">
+                                <div class="col-9">
+                                    {% if actifs.name == "XRP" or actifs.name =="Bitcoin" or actifs.name =="Ethereum" %}
+                                        <img src="{{asset("../image/"~actifs.name~".png")}}"  alt={{ actifs.name }}>
+                                    {% else %}
+                                        <img src="{{asset("../image/crypto.png")}}"  alt={{ actifs.name }}>
+                                    {% endif %}
+                                    {{ actifs.symbol }}({{ actifs.name }})</div>
+                                <div class="col-3 ">
+                                    {% if actifs.coef == 2 %}
+                                        <img src="{{asset("../image/2.png")}}"  alt="tres bien">
+                                    {% endif %}
+                                    {% if actifs.coef == 1 %}
+                                        <img src="{{asset("../image/1.png")}}"  alt=" bien">
+                                    {% endif %}
+                                    {% if actifs.coef == -1 %}
+                                        <img src="{{asset("../image/-1.png")}}"  alt="pas bon">
+                                    {% endif %}
+                                    {% if actifs.coef == -2 %}
+                                        <img src="{{asset("../image/-2.png")}}"  alt="horrible">
+                                    {% endif %}
+                                </div>
+                                </div>
+                        </li>
+                        {% endfor %}
+                    </ul>
+
+                </div>
+            </div>
+        </main>
+    </div>
+
+
+{% endblock %}

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title style="font-family: 'Roboto Bold'">Crypto Tracker - {% block title %}{% endblock %}</title>
+    {% block stylesheets %}
+        {{ encore_entry_link_tags('app') }}
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    {% endblock %}
+    <style>
+        html{
+            position: relative;
+            min-height: 100%;
+
+        }
+        title{
+            font-family: "Roboto Bold";
+        }
+        body {
+            /* Margin bottom by footer height */
+            min-height: 100%;
+            background: transparent;
+            font-family: "Roboto Regular";
+        }
+        .dark{
+            /*background-color: rgb(255,15,15);*/
+            background-color: rgb(16,15,15);
+        }
+    </style>
+</head>
+<body class="dark text-white ">
+
+
+<nav class="navbar  sticky-top navbar-dark ">
+    <a class="navbar-brand" href="{{ path('home') }}" >Crypto Tracker</a>
+
+
+        <ul class="nav justify-content-end">
+
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('remove') }}"><img src="{{asset("../image/modification.png")}}"  alt="Modifier"></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('add') }}"><img src="{{asset("../image/plus.png")}}"  alt="Ajouter"></a>
+            </li>
+
+        </ul>
+
+</nav>
+<div class="container">
+
+{% block body %}{% endblock %}
+</div>
+{% block javascripts %}{{ encore_entry_script_tags('app') }}{% endblock %}
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>
